@@ -24,6 +24,8 @@ while ((pos = s.find(delimiter)) != std::string::npos) {
 std::cout << s << std::endl;
 ```
 
+具体使用实例参见 https://github.com/Ethanzjp/Algorithms/blob/master/Traditional-Algorithms/LeetCode297.cpp
+
 * 使用C++11提供的正则表达式实现.
 
 ```c++
