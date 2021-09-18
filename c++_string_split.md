@@ -107,6 +107,8 @@ std::vector<std::string> Split(const std::string& str, const char delim) {
 
 * 使用C++11提供的正则表达式实现.
 
+这种写法下辈子见吧，记不住哇！
+
 ```c++
 std::string text = "hello world!";
 std::regex sp("\\s+");
@@ -119,6 +121,8 @@ for(auto& s: v){
 上述实现的问题是存在大量的内存拷贝，效率低下。
 
 * C++17以后使用views实现.
+* 
+这种写法下辈子见吧，记不住哇！
 
 ```c++
 string str("hello wordld");
@@ -135,7 +139,7 @@ for(auto&& s: sv){
 
 
 
-如果字符串为`char*`类型，在C语言中提供了strtok函数实现split.
+* 如果字符串为`char*`类型，在C语言中提供了strtok函数实现split.
 
 ```c++
 #include <string.h>
