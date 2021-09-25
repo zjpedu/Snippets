@@ -80,6 +80,7 @@ int main()
 }
 ```
 
+注意在上面的程序中 while (lock.exchange(true, std::memory_order_consume)) 使用了 memory_order_consume 内存顺序，该内存顺序规定了本线程中其它对 lock 的操作都必须在当前操作之后执行，编译器不能任意调换执行顺序。lock.exchange(false, std::memory_order_release) 使用了 memory_order_release  内存顺序，该内存规定了本线程中其它对 lock 的写操作都将先完成之后该修改操作才会做。当然其它内存顺序也能保证 spin lock 实现的正确性，但是我认为上述代码的内存顺序最能表达 spin lock 的语义。
 
 ### 编译与测试
 
