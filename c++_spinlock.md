@@ -59,11 +59,11 @@ int sum = 0;
 void f(int n)
 {
     for (int cnt = 0; cnt < 100; ++cnt) {
-        while (lock.exchange(true, std::memory_order_consume))  // acquire lock
+        while (lock.exchange(true, std::memory_order_acquire))  // acquire lock
              ; // spin
         // std::cout << "Output from thread " << n << '\n';
         sum++;
-        lock.exchange(false, std::memory_order_release);       // release lock
+        lock.store(false, std::memory_order_release);       // release lock
     }
 }
 
@@ -137,4 +137,6 @@ done
     * pthread_rwlock_trywrlock(&rwl_)  
 
 
-实现参考 https://github.com/Ethanzjp/Algorithms/tree/master/Concurrency/Thread-Parallel-Programming/criticalSection
+### 参考文献
+1. https://github.com/Ethanzjp/Algorithms/tree/master/Concurrency/Thread-Parallel-Programming/criticalSection
+2. 正确的 spin lock 实现 https://rigtorp.se/spinlock/
