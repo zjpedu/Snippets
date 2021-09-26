@@ -114,3 +114,24 @@ do
   ./test >> output
 done
 ```
+
+### pthread 库中包含的锁
+
+* pthread_mutex_t mutex_
+    * pthread_mutex_init(&mutex_, nullptr)
+    * pthread_mutex_destroy(&mutex_)
+    * pthread_mutex_lock(&mutex_)
+    * pthread_mutex_unlock(&mutex_)
+    * pthread_mutex_trylock(&mutex_)
+* pthread_spinlock_t spin_
+    * pthread_spin_init(&spin_, PTHREAD_PROCESS_PRIVATE)
+    * pthread_spin_lock(&spin_)
+    * pthread_spin_unlock(&spin_)
+    * pthread_spin_trylock(&spin_)
+* pthread_rwlock_t rwl_
+    * pthread_rwlock_init(&rwl_, nullptr)
+    * pthread_rwlock_rdlock(&rwl_)
+    * pthread_rwlock_wrlock(&rwl_)
+    * pthread_rwlock_unlock(&rwl_)
+    * pthread_rwlock_tryrdlock(&rwl_)
+    * pthread_rwlock_trywrlock(&rwl_)  
