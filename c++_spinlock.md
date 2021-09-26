@@ -84,7 +84,21 @@ int main()
 
 ### 编译与测试
 
-使用g++9 编译
+安装 g++9
+
+```shell
+yum install centos-release-scl
+yum-config-manager --enable rhel-server-rhscl-9-rpms
+yum install devtoolset-9
+scl enable devtoolset-9 bash
+
+yum install devtoolset-9-gcc-c++
+source /opt/rh/devtoolset-9/enable
+ccache -C   #对于找不到ccache命令这种错误，说明相关模块没有安装，先安装ccache
+
+```
+
+编译 test.cpp
 
 ```shell
 g++ -o test test.cpp -lpthread
