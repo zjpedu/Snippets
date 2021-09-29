@@ -52,3 +52,7 @@ g++ -o test test.cpp -lpthread
 0203049、0204039、0302049、0304029、0402039、0403029
 
 只可能为上述 6 种运行结果，这说明尽管在 main 线程中将 i 的值设置为 9，但是除 main 之外的其它线程仍然将 i 设置为 0.
+
+### 参考资料 
+
+https://stackoverflow.com/questions/11983875/what-does-the-thread-local-mean-in-c11
