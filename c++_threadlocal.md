@@ -45,7 +45,7 @@ int main(){
 使用 g++-9 编译
 
 ```shell
-g++ -o test test.cpp -lpthread
+g++ -o test test.cpp -std=c++11 -pthread
 ```
 
 可能的运行结果：
