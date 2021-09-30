@@ -101,7 +101,7 @@ ccache -C   #对于找不到ccache命令这种错误，说明相关模块没有�
 编译 test.cpp
 
 ```shell
-g++ -o test test.cpp -lpthread
+g++ -o test test.cpp -std=c++11 -pthread
 ```
 
 使用下列脚本测试上述 spin lock 实现的正确性
