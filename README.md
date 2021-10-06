@@ -1,2 +1,2 @@
-## nippets
+## Snippets
 Small functional snippets
