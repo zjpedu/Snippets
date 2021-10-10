@@ -1223,9 +1223,10 @@ void insert(Row *rows, int nrows)
 void search(int nrows, int proc){
     // printf("%d\n", (*(Row*)bt->btree_search(16)).a); // point query
     // printf("%x\n", bt->btree_search(16)); point query
-    unsigned long *bufs = new unsigned long[nrows*proc]{};
+    unsigned long *bufs = new unsigned long[(nrows)*proc + nrows]{};
     int offset = 0;
     bt->btree_search_range(START_INDEX, END_INDEX, bufs, offset);
+    cout << "offset: " << offset << endl;
     for (int i = 0; i < offset; i++)
     {
         auto tmp = (*(Row *)(char *)bufs[i]);
@@ -1243,10 +1244,10 @@ int main(int argc, char *argv[])
     FLAGS_log_dir = "./logs";  // create the directory by myself
     LOG(INFO) << "The main started!" << endl;
 
-    int proc;
-    proc = sysconf(_SC_NPROCESSORS_ONLN);  // get cpu number
-    cout << "proc: " << proc << endl;
-    LOG_IF(FATAL, proc < 0) << "There is no avaliable cpu!" << endl;
+    // int proc;
+    // proc = sysconf(_SC_NPROCESSORS_ONLN);  // get cpu number
+    // cout << "proc: " << proc << endl;
+    // LOG_IF(FATAL, proc < 0) << "There is no avaliable cpu!" << endl;
 
     Row rows[] = {{1000, 20}, {1000, 31}, {500, 75}, {2000, 31}, {2000, 16}, {4500, 50}};
     int len = sizeof(rows) / sizeof(rows[0]);
@@ -1254,18 +1255,21 @@ int main(int argc, char *argv[])
     cout << "pre-filled end!" << endl;
 
     // multi-thread
-    vector<std::thread> vthreads(proc);
-    for(int i = 0 ; i < proc; i++){
-        vthreads[i] = std::thread(insert, rows, len);
-    }
+    Row rows1[] = {{1000, 20}, {1000, 31}, {500, 75}, {2000, 31}, {2000, 16}, {4500, 50}};
+    Row rows2[] = {{1000, 20}, {1000, 31}, {500, 75}, {2000, 31}, {2000, 16}, {4500, 50}};
+    Row rows3[] = {{1000, 20}, {1000, 31}, {500, 75}, {2000, 31}, {2000, 16}, {4500, 50}};
+    vector<std::thread> vthreads(3);
+    vthreads[0] = std::thread(insert, rows1, len);
+    vthreads[1] = std::thread(insert, rows2, len);
+    vthreads[2] = std::thread(insert, rows3, len);
 
     for(auto & u: vthreads){
         u.join();
     }
-
-    search(len, proc);
-
+    
+    search(len, 4);
     delete bt;
     return 0;
 }
+
 ```
