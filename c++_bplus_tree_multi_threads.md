@@ -1209,18 +1209,21 @@ typedef struct Row
     int b;
 } Row;
 
-void task(Row *rows, int nrows)
+btree *bt = new btree();
+void insert(Row *rows, int nrows)
 {
     // construct b plus tree index
-    btree *bt = new btree();
+    
     for (int i = 0; i < nrows; i++)
     {
         bt->btree_insert(rows[i].b, (char *)&rows[i]);
     }
-    
+}
+
+void search(int nrows, int proc){
     // printf("%d\n", (*(Row*)bt->btree_search(16)).a); // point query
     // printf("%x\n", bt->btree_search(16)); point query
-    unsigned long *bufs = new unsigned long[nrows]{};
+    unsigned long *bufs = new unsigned long[nrows*proc]{};
     int offset = 0;
     bt->btree_search_range(START_INDEX, END_INDEX, bufs, offset);
     for (int i = 0; i < offset; i++)
@@ -1230,7 +1233,6 @@ void task(Row *rows, int nrows)
             printf("%d %d\n", tmp.a, tmp.b);
     }
     delete[] bufs;
-    delete bt;
     return;
 }
 
@@ -1248,20 +1250,22 @@ int main(int argc, char *argv[])
 
     Row rows[] = {{1000, 20}, {1000, 31}, {500, 75}, {2000, 31}, {2000, 16}, {4500, 50}};
     int len = sizeof(rows) / sizeof(rows[0]);
-    task(rows, len);
+    insert(rows, len);
     cout << "pre-filled end!" << endl;
 
     // multi-thread
     vector<std::thread> vthreads(proc);
     for(int i = 0 ; i < proc; i++){
-        vthreads[i] = std::thread(task, rows, len);
+        vthreads[i] = std::thread(insert, rows, len);
     }
 
     for(auto & u: vthreads){
         u.join();
     }
 
-    
+    search(len, proc);
+
+    delete bt;
     return 0;
 }
 ```
