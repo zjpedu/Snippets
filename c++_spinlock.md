@@ -39,6 +39,53 @@ int main()
 }
  ```
  
+ ```C++
+#include <thread>
+#include <vector>
+#include <iostream>
+#include <atomic>
+
+class spinlock{
+private:
+  std::atomic_flag flag;
+public:
+  spinlock() : flag(ATOMIC_FLAG_INIT) {}
+  void lock() {
+    while (flag.test_and_set(::std::memory_order_acquire));
+  }
+  void unlock() {
+    flag.clear(::std::memory_order_release);
+  }
+};
+
+
+int sum = 0;
+spinlock splk;
+
+void f(int n)
+{
+    for (int cnt = 0; cnt < 100; ++cnt) {
+        splk.lock();  // acquire lock
+        // std::cout << "Output from thread " << n << '\n';
+        sum++;
+        splk.unlock();               // release lock
+    }
+}
+
+int main()
+{
+    std::vector<std::thread> v;
+    for (int n = 0; n < 10; ++n) {
+        v.emplace_back(f, n);
+    }
+    for (auto& t : v) {
+        t.join();
+    }
+    std::cout << "sum = " << sum << std::endl;
+    return 0;
+}
+ ```
+ 
 在上面的程序中，std::atomic_flag 对象 lock 的上锁操作可以理解为 lock.test_and_set(std::memory_order_acquire); 解锁操作相当与 lock.clear(std::memory_order_release)。
 
 在上锁的时候，如果 lock.test_and_set 返回 false，则表示上锁成功（此时 while 不会进入自旋状态），因为此前 lock 的标志位为 false(即没有线程对 lock 进行上锁操作)，但调用 test_and_set 后 lock 的标志位为 true，说明某一线程已经成功获得了 lock 锁。
