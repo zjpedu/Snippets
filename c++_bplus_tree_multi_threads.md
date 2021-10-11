@@ -112,8 +112,8 @@ const int cardinality = (PAGESIZE - sizeof(header)) / sizeof(entry);
 class page
 {
 private:
-  header hdr;                 // header in persistent memory, 16 bytes
-  entry records[cardinality]; // slots in persistent memory, 16 bytes * n
+  header hdr;                 // header in memory, 16 bytes
+  entry records[cardinality]; // slots in memory, 16 bytes * n
 
 public:
   friend class btree;
