@@ -1,3 +1,11 @@
+## 在 Makefile 文件中判断 pkgconfig 依赖是否存在
+
+### 概述
+
+分别在 MacOS(Darwin) Linux(Linux) 平台下判断 pkgconfig 管理工具是否存在，该工具能够在 make 过程中自动链接需要的依赖。
+
+### 代码
+
 ```shell
 WITH_HOST ?= check
 WITH_TARGET ?= check
