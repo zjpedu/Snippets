@@ -8,3 +8,4 @@
 * Programs Timer 
 * Reader-Writer Lock using `shared_mutex`
 * Makefile determine the `pkg-config` exists
+* Automatic Vectorization
