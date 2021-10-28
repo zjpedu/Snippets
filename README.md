@@ -10,3 +10,4 @@
 * Makefile determine the `pkg-config` exists
 * Automatic Vectorization
     * 需要使用 intel 自己的 icc 编译器，否则无法实现
+* BlockQueue
