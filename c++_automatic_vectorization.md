@@ -1,5 +1,5 @@
 ```C++
- #include <iostream>
+#include <iostream>
 #include <chrono>
 using namespace std;
 #define IMAX 102400
@@ -78,6 +78,37 @@ int main(){
 ```
 
 g++-11 -fopenmp vectorization.cpp -O3 -std=c++17
+
+* install openmp support
+```shell
+brew install gcc
+brew install libomp
+brew info gcc
+export OMP_NUM_THREADS=8
+```
+
+* create hello.c
+
+```C++
+#include <stdio.h>
+#include <omp.h>
+int main(void){
+    #pragma omp parallel 
+    {
+        printf("Hello World! \n");
+    }
+
+    return 0;
+}
+```
+g++-11 -fopenmp hello.c -o hello
+
+* execute
+
+```shell
+./hello
+```
+
 
 ## 参考资料
 
