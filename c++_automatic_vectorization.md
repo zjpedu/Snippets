@@ -1,8 +1,8 @@
 ```C++
-#include <iostream>
+ #include <iostream>
+#include <chrono>
 using namespace std;
-#define IMAX 4096
-
+#define IMAX 102400
 
 class timers
 {
@@ -34,7 +34,7 @@ void add(int*  z, int*  x, int*  y){
     }
 }
 
-// #pragma ivdep
+#pragma ivdep
 void addVector(int* __restrict z, int* __restrict x, int* __restrict y){
     for(int i = 0; i < IMAX; i++){
       z[i] = x[i] = y[i];
@@ -45,7 +45,7 @@ int main(){
   int z1[IMAX];
   int x1[IMAX];
   int y1[IMAX];
-  
+
   int z2[IMAX];
   int x2[IMAX];
   int y2[IMAX];
@@ -58,26 +58,26 @@ int main(){
   }
 
   for(int i = 0; i < IMAX;i++){
-    x2[i] = i+1;
+    x2[i] = i - 2;
   }
   for(int i = 0; i < IMAX; i++){
-    y2[i] = i * 2;
+    y2[i] = i * 3;
   }
 
   {
     timers timer;
-    add(z1, x1, y1);
+    addVector(z1, x1, y1);
   }
   {
     timers timer;
-    addVector(z2, x2, y2);
+    add(z2, x2, y2);
   }
   return 0;
 }
 
 ```
 
-g++ test.cpp -std=c++11 -O3
+g++-11 -fopenmp vectorization.cpp -O3 -std=c++17
 
 ## 参考资料
 
