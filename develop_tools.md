@@ -36,7 +36,7 @@ https://www.macwk.com/article/jetbrains-crack
             "name": "(lldb) Attach",
             "type": "cppdbg",
             "request": "attach",
-            "program": "/Users/admin/matrix/bin/postgres",  # 这里是你的主进程 postgres 所在的位置，，一定要有该文件路径
+            "program": "/Users/admin/greenplum/bin/postgres",  # 这里是你的主进程 postgres 所在的位置，，一定要有该文件路径
             "processId": "${command:pickProcess}",
             "MIMode": "lldb",
             "targetArchitecture": "x86_64"  # 指定了目标架构，否则会报 Warning
