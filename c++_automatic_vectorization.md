@@ -77,7 +77,7 @@ int main(){
 
 ```
 
-g++-11 -fopenmp vectorization.cpp -O3 -std=c++17
+g++-11 -o test -fopenmp vectorization.cpp -O3 -std=c++17 -O3
 
 * install openmp support
 ```shell
@@ -101,7 +101,7 @@ int main(void){
     return 0;
 }
 ```
-g++-11 -fopenmp hello.c -o hello
+g++-11 -o hello -fopenmp hello.c -O3
 
 * execute
 
