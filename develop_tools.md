@@ -82,6 +82,8 @@ add_executable(gendata
 <img width="616" alt="Screenshot 2021-11-16 at 17 35 48" src="https://user-images.githubusercontent.com/13810907/141960056-902077ad-6858-4ace-a262-093a84cfe3e1.png">
 
 * 如何调试 greenplum，选择 attach to process 到 segment 的 idle 进程即可。
+
+
 #### VSCode 篇
   
 ```json
@@ -98,7 +100,7 @@ add_executable(gendata
 
 #### CLion activation code
 
-不建议用下面的方法破解 clion
+不建议用下面的方法强X clion
 Clion Key link: https://jetbra.in/test-7b06e3ddfa68ff9b483adfcd08cdd243831f7928.html?t=16018385822&__cf_chl_jschl_tk__=pmd_kkCMoEn9xwQxhrFDmjjPNlYTXGk9Kj.Rk0rC6.Nt4Nc-1634874565-0-gqNtZGzNAqWjcnBszQgR
 
 
