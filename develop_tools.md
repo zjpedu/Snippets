@@ -53,7 +53,7 @@ add_executable(gendata
 看到缺少库文件 <parquet/types.h>，在 bash 中执行
 
 ```shell
-$ pkg-config --cflags parquet. # 回写 -I/usr/local/include
+$ pkg-config --cflags parquet # 比如回写 -I/usr/local/include
 ```
 
 说明我的 parquet 在 /usr/local/include 目录下，于是我需要在我的 CMakeLists.txt 中增加下面选项：
