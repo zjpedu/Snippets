@@ -12,11 +12,11 @@ Clion 是付费软件，学生可以享受学生版。本文给出了一种其�
 cd /Users/xxx/Library/ # 请首先进入到该目录
 cd Logs # 在上面目录下找到 Logs 目录，进入后删除其中与 Jetbrains 有关的文件与文件夹
 cd ..
-cd Perferences # 再该目录下删除与 Jetbrains 有关的所有问价与文件夹
+cd Preferences # 再该目录下删除与 Jetbrains 有关的所有文件与文件夹
 cd ..
 cd Application\ Support # 在该目录下删除与 Jetbrains 有关的所有文件与文件夹
 cd ..
-cd Cachesn # 进入到该目录，删除与 Jetbrains 有关的所有文件与文件夹
+cd Caches # 进入到该目录，删除与 Jetbrains 有关的所有文件与文件夹
 ```
 
 * 下载你喜欢的版本的 CLion
