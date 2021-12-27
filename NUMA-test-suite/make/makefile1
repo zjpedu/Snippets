@@ -1,0 +1,49 @@
+CC=g++
+CFLAGS=-std=c++0x -c -lnuma
+LDFLAGS=-lnuma
+BUILD_DIR=build/
+
+
+
+for TID in 1 2 3 4 ; do \
+	EXECUTABLE$(TID)=show
+	SOURCES$(TID)=$(EXECUTABLE$(TID)).cpp optParser.cpp	
+	OBJECTS$(TID)=$(SOURCES$(TID):.cpp=.o)
+
+	all: show
+	$(EXECUTABLE$(TID)): $(OBJECTS$(TID))
+		$(CC) $(LDFLAGS) $(OBJECTS$(TID)) -o $(BUILD_DIR)$@
+
+done
+
+# show
+
+
+#TID=$((TID+1))
+
+# EXECUTABLE_2=array_access
+# SOURCES_2=$(EXECUTABLE_2).cpp optParser.cpp
+# OBJECTS_2=$(SOURCES_2:.cpp=.o)
+
+# $(EXECUTABLE_2): $(OBJECTS_2) 
+# 	$(CC) $(LDFLAGS) $(OBJECTS_2) -o $(BUILD_DIR)$@ 
+
+
+
+# in order to build a file ending in .o, first rebuild/create/find the corresponding file ending in .cpp,
+# and then run the command $(CC) $(CFLAGS) -o $@ $<
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+
+
+# CC=g++
+# CFLAGS=-std=c++0x -lnuma
+# BUILD_DIR=build/
+
+# all: show array_access
+
+# show: show.cpp optParser.cpp
+# 	$(CC) $(CFLAGS) 
+# array_access: array_access.cpp optParser.cpp

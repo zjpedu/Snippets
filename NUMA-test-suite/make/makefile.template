@@ -1,0 +1,19 @@
+CC=g++
+CFLAGS=-std=c++0x -c -lnuma
+LDFLAGS=-lnuma
+
+EXECUTABLE=$(DNAME)
+SHARE_DIR=$(PROJECT)src/share/
+BUILD_DIR=$(PROJECT)build/
+THIS_DIR=$(PROJECT)src/$(EXECUTABLE)/
+CPP_FILES=$(wildcard $(THIS_DIR)*.cpp) # grab all the cpp files in ./
+SOURCES=$(CPP_FILES) $(SHARE_DIR)optParser.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+
+all: $(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $(BUILD_DIR)$@ 
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
