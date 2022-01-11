@@ -1,14 +1,15 @@
 ### 高效开发工具篇
 
-最近在做大型分布式 MPP 数据库 Greenplum 的优化工作，早期调试程序习惯了使用 gdb + vim，但是在调试 Greenplum 这样的庞然大物时发现 gdb 对于我而言（请注意是对于我这个**菜鸡**而言）不是很完美，上古时代的程序员会选择使用 ctag 之类插件生成各种符号链接，但是对于我而言，还是不友好，经常调试着就发忘记了什么。于是自己琢磨选择一款集成开发测试工具，早期用过 Eclipse CDT，不过现在感觉这个系列的颜值比较低，慎重选择了 CLion 和 Visual Studio Code Insider。在我周边各式大佬中，这两种 IDE 用的最多，CLion 能够自动创建 CMake 工程，相对更加简洁友好，后续我在 CLion 中集成了 IDEAVIM 插件，保留了 VIM 强大的编辑功能。Visual Studio Code Insider 没有做太多的配置。
+最近在做大型分布式 MPP 数据库 Greenplum 的优化工作，早期调试程序习惯了使用 gdb + vim，但是在调试 Greenplum 这样的庞然大物时发现 gdb 对于我而言（请注意是对于我这个**菜鸡**而言）不是很完美，上古时代的程序员会选择使用 ctag 之类插件生成各种符号链接，但是对于我而言，还是不友好，经常调试着就发忘记了什么。于是自己琢磨选择一款集成开发测试工具，早期用过 Eclipse CDT，不过现在感觉这个系列的颜值比较低，慎重选择了 CLion 和 Visual Studio Code Insider。在我周边各式大佬中，这两种 IDE 用的最多，CLion 能够自动创建 CMake 工程，相对更加简洁友好，后续我在 CLion 中集成了 IDEAVIM 插件，保留了 vim 强大的编辑功能。Visual Studio Code 也非常强大，在远程连接服务器集群开发方面有独特的优势，本文将详细说明两个软件的使用方法。
 
 #### Clion 篇
 
-Clion 是付费软件，学生可以享受学生版。本文给出了一种其它方法，不鼓励你使用这种方法。
+Clion 是付费软件，学生可以享受免费 License 。本文给出了一种其它方法，不鼓励你使用这种方法。
 
-* 首先，如果你安装了 CLion，并且曾经尝试过一些其他**偏方**， 先完全卸载，重新安装
+* 首先，如果你安装了 CLion， 先完全卸载，重新安装
 
 ```shell
+# 在这里推荐使用 https://freemacsoft.net/appcleaner/ 卸载软件，后续手动删除下述文件夹 
 cd /Users/xxx/Library/ # 请首先进入到该目录
 cd Logs # 在上面目录下找到 Logs 目录，进入后删除其中与 Jetbrains 有关的文件与文件夹
 cd ..
@@ -19,7 +20,7 @@ cd ..
 cd Caches # 进入到该目录，删除与 Jetbrains 有关的所有文件与文件夹
 ```
 
-* 下载你喜欢的版本的 CLion
+* 下载你喜欢的版本的 CLion (推荐 CLion 2021.2.2 以下版本)
 
 https://www.jetbrains.com/clion/download/other.html
 
@@ -30,6 +31,7 @@ https://www.macwk.com/article/jetbrains-crack 如果不能下载，下面链接�
 插件下载链接: https://pan.baidu.com/s/1HCSMhWzOR_DPMAYVKEFAZQ 提取码: 6aga
 
 配置好 CLion 之后，导入你自己的工程，对于非常庞大的工程，你一定希望能够自动生成 CMakeLists.txt 文件，很简单，如下图：
+
 <img width="1297" alt="Screenshot 2021-11-16 at 17 15 31" src="https://user-images.githubusercontent.com/13810907/141957024-997e1381-db92-4230-b97f-7c44d00937c3.png">
 
 * 如果你的工程中包含一个不完整的 CMakeLists.txt 文件，那么你首先删除它；
@@ -38,7 +40,7 @@ https://www.macwk.com/article/jetbrains-crack 如果不能下载，下面链接�
 在我的 demo 中 CLion 为我生成了如下 CMakeLists.txt 文件：
 
 ```shell
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.20)
 project(gendata)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -77,9 +79,11 @@ add_executable(gendata
 接着是代码风格的问题，使用 tab 缩进，并且在 IDE 中 show whitespace
 
 * 勾选 "show whitespace"
+
 <img width="970" alt="Screenshot 2021-11-16 at 17 33 44" src="https://user-images.githubusercontent.com/13810907/141959882-b916d9cf-52de-480f-bddd-ca8f2378276f.png">
 
 * 勾选 "use tab character" 和 "smart tab" 选项
+
 <img width="616" alt="Screenshot 2021-11-16 at 17 35 48" src="https://user-images.githubusercontent.com/13810907/141960056-902077ad-6858-4ace-a262-093a84cfe3e1.png">
 
 * 如何调试 greenplum，选择 attach to process 到 segment 的 idle 进程即可。
@@ -87,6 +91,7 @@ add_executable(gendata
 
 #### VSCode 篇
   
+* lldb 配置方法
 ```json
 {
             "name": "(lldb) Attach",
@@ -98,6 +103,8 @@ add_executable(gendata
             "targetArchitecture": "x86_64"  # 指定了目标架构，否则会报 Warning
         },
 ```
+
+* gdb 使用方法同上
 
 #### CLion activation code
 
