@@ -25,15 +25,15 @@ https://www.jetbrains.com/clion/download/other.html
 
 * 试试这个办法
 
-https://www.macwk.com/article/jetbrains-crack 如果不能下载，下面链接有可以用的版本。
+https://www.macwk.com/article/jetbrains-crack 如果不能下载，下面链接有可以用的版本。**请注意，只有 2021.2.2 (包括) 以下的版本才能使用 reset 方法，其它版本测试好像不行**。
 
 插件下载链接: https://pan.baidu.com/s/1HCSMhWzOR_DPMAYVKEFAZQ 提取码: 6aga
 
-配置好 CLion 之后，导入你自己的工程，对于非常庞大的工程，你一定希望能够自动生成 cmakelists.txt 文件，很简单，如下图：
+配置好 CLion 之后，导入你自己的工程，对于非常庞大的工程，你一定希望能够自动生成 CMakeLists.txt 文件，很简单，如下图：
 <img width="1297" alt="Screenshot 2021-11-16 at 17 15 31" src="https://user-images.githubusercontent.com/13810907/141957024-997e1381-db92-4230-b97f-7c44d00937c3.png">
 
 * 如果你的工程中包含一个不完整的 CMakeLists.txt 文件，那么你首先删除它；
-* 接着按照图上的步骤点击 “Unload CMake Project”，它会为你生成你想要的 CMakeLists.txt 文件.
+* 接着按照图上的步骤点击 “Unload CMake Project”，点开随便一个文件，它会提示你为是否为项目生成 CMakeLists.txt 文件，此时选择生成会跳出选择源码文件的界面，选择即可.
 
 在我的 demo 中 CLion 为我生成了如下 CMakeLists.txt 文件：
 
