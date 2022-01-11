@@ -47,7 +47,8 @@ add_executable(gendata
         gendata.cpp)
 ```
 
-在大型工程中往往会有很多的系统依赖库，为了给出场景，我故意制造了下图所示的情况：
+在大型工程中往往会有很多的系统依赖库，为了给出场景，我故意制造了下图所示的情况:
+
 <img width="336" alt="Screenshot 2021-11-16 at 17 20 09" src="https://user-images.githubusercontent.com/13810907/141957672-95776d7e-bea9-4f66-9239-f6fad71ec4f9.png">
 
 看到缺少库文件 <parquet/types.h>，在 bash 中执行
