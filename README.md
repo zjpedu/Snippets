@@ -12,3 +12,4 @@
     * 需要使用 intel 自己的 icc 编译器，否则无法实现
 * Efficient Division
 * generate data and read data using mmap
+* big endian or little endian
