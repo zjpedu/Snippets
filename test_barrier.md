@@ -7,7 +7,7 @@
 extern int g;
 void foo(int x){
      g++;
-     // asm volatile("nop"::"r"(x) : "memory"); // complier barrier
+     // asm volatile("nop"::"r"(x) : "memory"); // complier barrier，汇编不能被编译器优化
      __sync_synchronize();  // memory barrier
      g++;
  }
