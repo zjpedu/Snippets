@@ -13,3 +13,4 @@
 * Efficient Division
 * generate data and read data using mmap
 * big endian or little endian
+* compiler barrier and memory barrier
