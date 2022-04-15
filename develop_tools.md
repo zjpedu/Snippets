@@ -103,8 +103,48 @@ add_executable(gendata
             "targetArchitecture": "x86_64"  # 指定了目标架构，否则会报 Warning
         },
 ```
-
 * gdb 使用方法同上
+
+在 vscode 中打开显示所有空白的方法：(同上 CLion 设置)
+
+1. 打开setting,在搜索框中输入renderControlCharacters,选中勾选框,即可显示tab.
+2. 在 setting 搜索框中输入renderWhitespace,选择all,即可显示空格.
+
+launch.json 文件如下：
+
+```shell
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Attach",
+            "type": "cppdbg",
+            "request": "attach",  // 配置 gdb 连接方式为 attach
+            "program": "/home/gpadmin/opt/gpdb/bin/postgres",   // 配置可执行 postgres 进程的位置
+            "processId": "${command:pickProcess}",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description":  "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "targetArchitecture": "x64"
+        }
+
+    ]
+
+}
+```
 
 #### CLion activation code
 
