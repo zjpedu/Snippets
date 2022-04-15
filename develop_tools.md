@@ -4,7 +4,7 @@
 
 #### Clion 篇
 
-Clion 是付费软件，学生可以享受免费 License 。本文给出了一种其它方法，不鼓励你使用这种方法。
+Clion 是付费软件，学生可以享受免费 License。
 
 * 首先，如果你安装了 CLion， 先完全卸载，重新安装
 
@@ -151,10 +151,3 @@ launch.json 文件如下：
 ```shell
 gdb attach pid  # GDB CLion VSCODE 只能有一个工具 attach 当前进程，否则会报错
 ```
-
-#### CLion activation code
-
-不建议用下面的方法强X clion
-Clion Key link: https://jetbra.in/test-7b06e3ddfa68ff9b483adfcd08cdd243831f7928.html?t=16018385822&__cf_chl_jschl_tk__=pmd_kkCMoEn9xwQxhrFDmjjPNlYTXGk9Kj.Rk0rC6.Nt4Nc-1634874565-0-gqNtZGzNAqWjcnBszQgR
-
-
