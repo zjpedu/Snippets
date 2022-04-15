@@ -146,6 +146,12 @@ launch.json 文件如下：
 }
 ```
 
+#### GDB
+
+```shell
+gdb attach pid  # GDB CLion VSCODE 只能有一个工具 attach 当前进程，否则会报错
+```
+
 #### CLion activation code
 
 不建议用下面的方法强X clion
