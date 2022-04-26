@@ -86,7 +86,7 @@ add_executable(gendata
 
 <img width="616" alt="Screenshot 2021-11-16 at 17 35 48" src="https://user-images.githubusercontent.com/13810907/141960056-902077ad-6858-4ace-a262-093a84cfe3e1.png">
 
-* 如何调试 greenplum，选择 attach to process 到 segment 的 idle 进程即可。
+* 调试 greenplum，选择 attach to process 到 segment 的 idle 进程即可。
 
 
 #### VSCode 篇
@@ -97,7 +97,7 @@ add_executable(gendata
             "name": "(lldb) Attach",
             "type": "cppdbg",
             "request": "attach",
-            "program": "/Users/admin/greenplum/bin/postgres",  # 这里是你的主进程 postgres 所在的位置，，一定要有该文件路径
+            "program": "/Users/admin/greenplum/bin/postgres",  # 这里是你的主进程 postgres 所在的位置，一定要有该文件路径
             "processId": "${command:pickProcess}",
             "MIMode": "lldb",
             "targetArchitecture": "x86_64"  # 指定了目标架构，否则会报 Warning
@@ -151,5 +151,5 @@ launch.json 文件如下：
 #### GDB
 
 ```shell
-gdb attach pid  # GDB CLion VSCODE 只能有一个工具 attach 当前进程，否则会报错
+gdb attach pid  # GDB CLion vscode 只能有一个工具 attach 当前进程，否则会报错
 ```
