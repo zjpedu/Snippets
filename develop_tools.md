@@ -110,7 +110,7 @@ add_executable(gendata
 1. 打开setting,在搜索框中输入renderControlCharacters,选中勾选框,即可显示tab.
 2. 在 setting 搜索框中输入renderWhitespace,选择all,即可显示空格.
 
-ctrl + ‘-’ 跳回到上一步函数调用处
+ctrl + ‘-’ 跳回到上一步函数调用处. ctrl 和 shift 和 `-` 上翻.
 
 launch.json 文件如下：
 
