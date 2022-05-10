@@ -109,6 +109,10 @@ add_executable(gendata
 
 1. 打开setting,在搜索框中输入renderControlCharacters,选中勾选框,即可显示tab.
 2. 在 setting 搜索框中输入renderWhitespace,选择all,即可显示空格.
+3. 使用下面方式修改缩进方式,点击 "Tab Size" -> "Indent Using Tabs" 即可.
+
+<img width="675" alt="Screen Shot 2022-05-10 at 15 13 39" src="https://user-images.githubusercontent.com/13810907/167571339-a3d3ef34-dc40-417e-9ec0-e8790d9f2897.png">
+
 
 ctrl + ‘-’ 跳回到上一步函数调用处. ctrl 和 shift 和 `-` 上翻.
 
