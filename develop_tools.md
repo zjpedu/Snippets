@@ -1,7 +1,5 @@
 ### 高效开发工具篇
 
-最近在做大型分布式 MPP 数据库 Greenplum 的优化工作，早期调试程序习惯了使用 gdb + vim，但是在调试 Greenplum 这样的庞然大物时发现 gdb 对于我而言（请注意是对于我这个**菜鸡**而言）不是很完美，上古时代的程序员会选择使用 ctag 之类插件生成各种符号链接，但是对于我而言，还是不友好，经常调试着就发忘记了什么。于是自己琢磨选择一款集成开发测试工具，早期用过 Eclipse CDT，不过现在感觉这个系列的颜值比较低，慎重选择了 CLion 和 Visual Studio Code Insider。在我周边各式大佬中，这两种 IDE 用的最多，CLion 能够自动创建 CMake 工程，相对更加简洁友好，后续我在 CLion 中集成了 IDEAVIM 插件，保留了 vim 强大的编辑功能。Visual Studio Code 也非常强大，在远程连接服务器集群开发方面有独特的优势，本文将详细说明两个软件的使用方法。
-
 #### Clion 篇
 
 Clion 是付费软件，学生可以享受免费 License。
@@ -109,7 +107,7 @@ add_executable(gendata
 
 1. 打开setting,在搜索框中输入renderControlCharacters,选中勾选框,即可显示tab.
 2. 在 setting 搜索框中输入renderWhitespace,选择all,即可显示空格.
-3. 使用下面方式修改缩进方式,点击 "Tab Size" -> "Indent Using Tabs" 即可.
+3. 使用下面方式修改**缩进**方式,点击 "Tab Size" -> "Indent Using Tabs" 即可.
 
 <img width="675" alt="Screen Shot 2022-05-10 at 15 13 39" src="https://user-images.githubusercontent.com/13810907/167571339-a3d3ef34-dc40-417e-9ec0-e8790d9f2897.png">
 
@@ -155,5 +153,6 @@ launch.json 文件如下：
 #### GDB
 
 ```shell
-gdb attach pid  # GDB CLion vscode 只能有一个工具 attach 当前进程，否则会报错
+gdb attach $pid  # GDB CLion vscode 只能有一个工具 attach 当前进程，否则会报错
+gdb -p $pid
 ```
