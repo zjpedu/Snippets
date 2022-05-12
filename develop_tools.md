@@ -111,8 +111,10 @@ add_executable(gendata
 
 <img width="675" alt="Screen Shot 2022-05-10 at 15 13 39" src="https://user-images.githubusercontent.com/13810907/167571339-a3d3ef34-dc40-417e-9ec0-e8790d9f2897.png">
 
-
 ctrl + ‘-’ 跳回到上一步函数调用处. ctrl 和 shift 和 `-` 上翻.
+
+> 一般规定一行代码不超过80或者120个字符。取决于团队的编码规范。不同公司不同团队有不同的规定。当单行代码过长。产生横向滚动条。使得代码难以阅读。
+> 在 Settings 中搜索 editor.rulers,然后编辑 xxx.json 文件 写入 "editor.rulers": [80]
 
 launch.json 文件如下：
 
