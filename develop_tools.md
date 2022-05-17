@@ -152,6 +152,8 @@ launch.json 文件如下：
 }
 ```
 
+vscode 经常断连远程服务器,并且要求输入密码的解决办法 https://blog.csdn.net/weixin_42565090/article/details/120440063
+
 #### GDB
 
 ```shell
