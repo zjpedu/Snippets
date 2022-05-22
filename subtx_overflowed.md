@@ -81,24 +81,7 @@ end;
 
 -- 全部插入到 seg0 上,这个可以作为 QE 上的测试用例
 ```sql
-CREATE TABLE t(c1 int);
-CREATE OR REPLACE FUNCTION insert_data()
-RETURNS VOID
-LANGUAGE plpgsql
-AS $$
-DECLARE i int;
-BEGIN
-	FOR i in 0..300
-	LOOP
-		BEGIN
-			INSERT INTO t(c1) VALUES(1);
-		EXCEPTION
-		WHEN UNIQUE_VIOLATION THEN
-			NULL;	
-		END;
-	END LOOP;
-END
-$$;
+s
 
 BEGIN;
 SELECT insert_data();
@@ -159,6 +142,7 @@ begin
 		begin
 			create temp table tmptab(c int);
 			drop table tmptab;
+			-- insert into t1 values(1);
 		exception
 			WHEN others THEN
          		NULL;  -- ignore the error
@@ -202,3 +186,17 @@ done
 8. https://about.gitlab.com/blog/2021/09/29/why-we-spent-the-last-month-eliminating-postgresql-subtransactions/ 有详细的原因调查过程,非常棒的子事务溢出资料
 9. 复现方法和 patch https://www.postgresql.org/message-id/003201d79d7b$189141f0$49b3c5d0$@tju.edu.cn
 
+Feat: Find the pids of overflowd subtransaction
+
+In gpdb, it support using `savepoint`, `begin...exception...`, and `plpython`
+to issue the subtransactions. Especially, it may be much serious for the
+application error handling. It may issue many more subtransaction for
+error handling.
+
+For the postgres and gpdb, the number of active subtransactions has maximum
+value. The subtransaction state move back and force when the number of
+active subtransactions exceed the maximum value (64) for inspect the
+snapshot visiblity. It may cause shake in system performance.
+
+The DBA need to inspect the cause. So, we add the helper function for
+finding the pids of overflowed subtransaction for coordinator and segments.

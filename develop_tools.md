@@ -153,6 +153,54 @@ launch.json 文件如下：
 ```
 vscode 插件 https://cloud.tencent.com/developer/article/1555413
 
+当我们自己创建 C++ 功能并运行时，发现在 terminal 中没有任何输出，发现在 .vscode/tasks.json
+中的 args 末尾增加如下两行: (参考 https://www.zhihu.com/question/371089721)，同时为了
+编译器能够识别 c++11 的语法，还需要增加 "-std=c++11" 如果采用了更高的版本，则使用更高的版本
+即可。
+
+```json
+"-std=c++11",
+"&&",
+"${fileDirname}/${fileBasenameNoExtension}"
+```
+
+完整的 tasks.json 如下：
+
+```json
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: clang++ 生成活动文件",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-std=c++11",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "&&",
+                "${fileDirname}/${fileBasenameNoExtension}"
+
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "调试器生成的任务。"
+        }
+    ],
+    "version": "2.0.0"
+}
+```
+
 #### GDB
 
 ```shell
