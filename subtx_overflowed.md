@@ -80,6 +80,7 @@ end;
 ```
 
 -- 全部插入到 seg0 上,这个可以作为 QE 上的测试用例
+
 ```sql
 CREATE TABLE t(c1 int);
 CREATE OR REPLACE FUNCTION insert_data()
