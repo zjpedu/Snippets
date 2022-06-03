@@ -201,6 +201,10 @@ vscode 插件 https://cloud.tencent.com/developer/article/1555413
 }
 ```
 
+vscode 中创建 cmake 工程办法
+https://www.cnblogs.com/iwiniwin/p/13705456.html
+
+
 #### GDB
 
 ```shell
