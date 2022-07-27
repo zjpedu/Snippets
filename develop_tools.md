@@ -204,6 +204,15 @@ vscode 插件 https://cloud.tencent.com/developer/article/1555413
 vscode 中创建 cmake 工程办法
 https://www.cnblogs.com/iwiniwin/p/13705456.html
 
+如果在 vscode 中不能跳转到定义的解决办法: command + shift + p 打开 settings.json
+```shell
+"C_Cpp.intelliSenseEngine": "Default",
+"C_Cpp.default.cStandard": "c11",
+"C_Cpp.default.cppStandard": "c++11",
+```
+<img width="1063" alt="Screen Shot 2022-07-27 at 17 50 20" src="https://user-images.githubusercontent.com/13810907/181218182-d4a4f35d-bd02-4212-8751-5fa2dfd9f4d0.png">
+
+
 
 #### GDB
 
