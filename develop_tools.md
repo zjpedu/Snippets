@@ -212,7 +212,15 @@ https://www.cnblogs.com/iwiniwin/p/13705456.html
 ```
 <img width="1063" alt="Screen Shot 2022-07-27 at 17 50 20" src="https://user-images.githubusercontent.com/13810907/181218182-d4a4f35d-bd02-4212-8751-5fa2dfd9f4d0.png">
 
-
+安装 C/C++ GNU Global 也是解决跳转问题的步骤
+```shell
+名称: C/C++ GNU Global
+ID: jaycetyle.vscode-gnu-global
+说明: Intellisense for C/C++ using GNU Global
+版本: 0.3.5
+发布者: Lin Chieh
+VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=jaycetyle.vscode-gnu-global
+```
 
 #### GDB
 
